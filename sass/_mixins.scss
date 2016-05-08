@@ -1,0 +1,115 @@
+@import "variables";
+@mixin placeholder($color,$font-size){
+	&::-webkit-input-placeholder
+{
+	color: $color;
+	font-size: $font-size;
+	opacity: 1;
+}
+&:-moz-placeholder
+{
+	color: $color;
+	font-size: $font-size;
+	opacity: 1;
+}
+&::-moz-placeholder
+{
+	color: $color;
+	font-size: $font-size;
+	opacity: 1;
+}
+&:-ms-input-placeholder
+{
+	color: $color;
+	font-size: $font-size;
+	opacity: 1;
+}
+}
+
+@mixin pseudo($width,$height){
+	content: "";
+	position: absolute;
+
+	width: $width;
+	height: $height;
+}
+
+@mixin btn($width,$color:$main-green){
+	width: $width;
+	position: relative;
+	z-index: 10;
+
+	padding: 15px 0;
+
+	border-radius: 48px / 49px;
+	border: none;
+
+	font-size: 30px;
+	font-family: $font-reg;
+	line-height: 26px;
+	color: white;
+
+	background-color: $color;
+
+	&:before{
+		content: "";
+		position: absolute;
+		width: 538/630 * 100%;
+		z-index: -11;
+
+		top: -7%;
+		bottom: -7%;
+		left: 50%;
+		transform: translateX(-50%);
+
+		border: 2px solid $color;
+		border-radius: inherit;
+
+		transition: all 0.5s;
+
+	}
+
+	&:hover{
+		&:before{
+			top: -14%;
+			bottom: -14%;
+
+			width: 660/630 * 100%;
+		}
+	}
+}
+
+@mixin sect-title($color:#2b2a29,$isBlue:notBlue){
+
+	padding-top: 13px;
+
+	@if($isBlue == blue){
+		background: url(img/title-bg--blue.png) no-repeat center;
+	} @else{
+		background: url(img/title-bg.png) no-repeat center;
+	}
+	
+	
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 40px; 
+	color: $color;
+	font-family: $font-semibold;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+@mixin input($width,$height,$color,$font-size){
+	width: $width;
+	height: $height;
+
+	border-radius: 20px / 20px 20px 20px 20px;
+	border: 3px solid $color;
+
+	text-align: center;
+	color: $color;
+	font-size: $font-size;
+	font-family: $font-light;
+
+	@include placeholder($color,$font-size);
+}
